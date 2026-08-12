@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-import AddTransaction from "./Components/AddTransaction";
 
-function App() {
-  return (
-    <div>
-      <AddTransaction />
-=======
 import { useEffect, useState } from 'react';
 import { loadTransactions, saveTransactions } from './utils/localStorage';
 import './styles/App.css';
@@ -13,6 +6,7 @@ import './styles/Dashboard.css';
 import './styles/Navbar.css';
 import './styles/Transaction.css';
 import './styles/Form.css';
+import AddTransaction from "./Components/AddTransaction";
 
 function App() {
   const [transactions, setTransactions] = useState(() => loadTransactions());
@@ -302,15 +296,15 @@ function App() {
             )}
           </div>
         </section>
-      </main>
+   
+  </main>
 
-      <footer>
-        <strong>BudgetWise</strong>
-        <span>Smart Spending Starts Here</span>
-      </footer>
->>>>>>> main
-    </div>
-  );
+  <footer>
+    <strong>BudgetWise</strong>
+    <span>Smart Spending Starts Here</span>
+  </footer>
+);
+
 }
 
 export default App;
