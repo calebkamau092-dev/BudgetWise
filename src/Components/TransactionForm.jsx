@@ -19,7 +19,11 @@ function TransactionForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.amount || !formData.date) {
+    if (
+      !formData.name ||
+      !formData.amount ||
+      !formData.date
+    ) {
       alert("Please fill in all fields.");
       return;
     }
@@ -38,81 +42,78 @@ function TransactionForm() {
   };
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="name">Transaction Name</label>
+    <form onSubmit={handleSubmit}>
+
+      <label>Transaction Name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="e.g Grocery Shopping"
+        value={formData.name}
+        onChange={handleChange}
+      />
+
+      <label>Amount (KSh)</label>
+      <input
+        type="number"
+        name="amount"
+        placeholder="0.00"
+        value={formData.amount}
+        onChange={handleChange}
+      />
+
+      <label>Category</label>
+      <select
+        name="category"
+        value={formData.category}
+        onChange={handleChange}
+      >
+        <option>Salary</option>
+        <option>Food</option>
+        <option>Shopping</option>
+        <option>Transport</option>
+        <option>Bills</option>
+        <option>Health</option>
+      </select>
+
+      <label>Transaction Type</label>
+
+      <div>
+        <label>
           <input
-            id="name"
-            type="text"
-            name="name"
-            placeholder="e.g. Grocery Shopping"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="amount">Amount (KSh)</label>
-          <input
-            id="amount"
-            type="number"
-            name="amount"
-            placeholder="0.00"
-            value={formData.amount}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-          >
-            <option>Salary</option>
-            <option>Food</option>
-            <option>Shopping</option>
-            <option>Transport</option>
-            <option>Bills</option>
-            <option>Health</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="type">Transaction Type</label>
-          <select
-            id="type"
+            type="radio"
             name="type"
-            value={formData.type}
+            value="income"
+            checked={formData.type === "income"}
             onChange={handleChange}
-          >
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-          </select>
-        </div>
+          />
+          Income
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="type"
+            value="expense"
+            checked={formData.type === "expense"}
+            onChange={handleChange}
+          />
+          Expense
+        </label>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="date">Date</label>
-        <input
-          id="date"
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-        />
-      </div>
+      <label>Date</label>
+      <input
+        type="date"
+        name="date"
+        value={formData.date}
+        onChange={handleChange}
+      />
 
-      <div className="form-actions">
-        <button type="submit" className="add-button">
-          Add Transaction
-        </button>
-      </div>
+      <button type="submit">
+        Add Transaction
+      </button>
+
     </form>
   );
 }
