@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import AddTransaction from './Components/AddTransaction'
+import App from './App'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AddTransaction />
+    <App />
   </StrictMode>,
 )
