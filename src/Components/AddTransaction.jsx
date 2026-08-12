@@ -1,5 +1,6 @@
 import TransactionForm from "./TransactionForm";
-
+import "../styles/Form.css";
+import "../styles/Transaction.css";
 
 function AddTransaction() {
   return (
