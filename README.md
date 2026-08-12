@@ -1,16 +1,32 @@
-# React + Vite
+# BudgetWise – Personal Budget & Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+BudgetWise is a responsive web application built with React that helps users manage their personal finances by tracking income, expenses, and savings. Users can record transactions, categorize spending, monitor their remaining balance, and view summaries of their financial habits — all through a simple, intuitive interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add, edit, and delete income and expense transactions
+- Categorize transactions (Food, Transport, Bills, Entertainment, Savings, etc.)
+- View current balance, total income, and total expenses
+- Filter and search transactions
+- View financial summaries and statistics
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- React Router DOM
+- JSON Server (mock backend)
+- CSS / Tailwind CSS
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/calebkamau092-dev/BudgetWise.git
+cd BudgetWise
+npm install
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`.
