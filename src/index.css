@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Basic page settings */
 :root {
   font-family: Arial, sans-serif;
@@ -16,10 +17,17 @@
 }
 
 
+=======
+html {
+  scroll-behavior: smooth;
+}
+
+>>>>>>> origin/main
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+<<<<<<< HEAD
 
   background-color: #f8fafc;
 }
@@ -675,4 +683,10 @@ button {
 
     gap: 15px;
   }
+=======
+}
+
+#root {
+  min-height: 100vh;
+>>>>>>> origin/main
 }
