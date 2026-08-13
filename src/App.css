@@ -1,0 +1,168 @@
+/* Gives the whole dashboard some space and a light background. */
+.dashboard {
+  padding: 40px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Places the Dashboard title and Add Transaction button on the same row. */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+/* Styles the main Dashboard heading. */
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 40px;
+  color: #172033;
+}
+
+/* Styles the small description below the heading. */
+.dashboard-header p {
+  margin-top: 8px;
+  color: #64748b;
+}
+
+/* Creates three columns for the Balance, Income and Expense cards. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+/* Styles each financial card. */
+.card {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 32px;
+  min-height: 160px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Keeps the card title and emoji on the same row. */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Styles Balance, Income and Expenses headings. */
+.card h3 {
+  margin: 0;
+  color: #64748b;
+  font-size: 20px;
+}
+
+/* Styles the large amount on each card. */
+.card h2 {
+  margin: 25px 0 8px;
+  color: #172033;
+  font-size: 34px;
+}
+
+/* Styles the description underneath the amount. */
+.card p {
+  margin: 0;
+  color: #94a3b8;
+}
+
+/* Creates the small background around the emoji. */
+.card-icon {
+  width: 54px;
+  height: 54px;
+  background-color: #eff6ff;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+/* Styles the Add Transaction button in the Dashboard. */
+.add-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Changes the button slightly when the mouse is over it. */
+.add-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Styles the Recent Transactions container. */
+.transactions {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 32px;
+}
+
+/* Styles the Recent Transactions heading. */
+.transactions h2 {
+  margin-top: 0;
+  color: #172033;
+}
+
+/* Creates the layout for each transaction. */
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Removes the border from the last transaction. */
+.transaction:last-child {
+  border-bottom: none;
+}
+
+/* Styles the transaction title. */
+.transaction h3 {
+  margin: 0 0 5px;
+  color: #172033;
+}
+
+/* Styles the transaction type. */
+.transaction p {
+  margin: 0;
+  color: #94a3b8;
+}
+
+/* Styles income amounts in green. */
+.income-amount {
+  color: #16a34a;
+}
+
+/* Styles expense amounts in red. */
+.expense-amount {
+  color: #dc2626;
+}
+
+/* Makes the cards fit smaller screens. */
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .dashboard {
+    padding: 25px;
+  }
+}
