@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TransactionItem from "./TransactionItem";
+import "../styles/Transaction.css";
 
 function TransactionHistory({ transactions }) {
   const [search, setSearch] = useState("");

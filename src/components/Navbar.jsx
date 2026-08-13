@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Navbar.css";
 
 // Navbar component
 function Navbar({ page, setPage }) {

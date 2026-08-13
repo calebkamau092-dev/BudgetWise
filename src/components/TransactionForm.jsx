@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Form.css";
 
 function TransactionForm({ transactions, setTransactions }) {
   const [formData, setFormData] = useState({

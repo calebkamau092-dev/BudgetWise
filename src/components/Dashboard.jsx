@@ -1,8 +1,10 @@
 import BalanceCard from "./BalanceCard";
 import IncomeCard from "./IncomeCard";
 import ExpenseCard from "./ExpenseCard";
+import "../styles/Dashboard.css";
+import AddTransaction from "./AddTransaction";
 
-function Dashboard({ transactions }) {
+function Dashboard({ transactions, setPage }) {
 
   // Get all transactions that are income.
   const incomeTransactions = transactions.filter(
@@ -38,7 +40,9 @@ function Dashboard({ transactions }) {
           <p>Here is an overview of your finances.</p>
         </div>
 
-        <button className="add-button">
+        <button className="add-button"
+          onClick={() => setPage("add")}
+        >
           + Add Transaction
         </button>
       </div>

@@ -1,63 +1,239 @@
+/* =========================================
+   DASHBOARD
+   Professional Banking Theme
+========================================= */
+
 .dashboard {
   width: 100%;
 }
 
+/* Header */
+
 .dashboard-header {
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
+
   gap: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
-.dashboard-title {
+.dashboard-header h1 {
   margin: 0;
-  font-size: 28px;
+
+  color: var(--primary);
+
+  font-size: 32px;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.dashboard-header p {
+  margin: 7px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 15px;
+}
+
+/* Summary cards */
+
+.cards {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 28px;
+}
+
+.card {
+  position: relative;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border-light);
+
+  border-radius: 12px;
+
+  padding: 22px;
+
+  min-height: 145px;
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+}
+
+.card h3 {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #eef4ff;
+
+  font-size: 17px;
+}
+
+.card h2 {
+  margin: 0 0 6px;
+
+  color: var(--primary);
+
+  font-size: 25px;
   font-weight: 700;
 }
 
-.dashboard-subtitle {
-  margin: 6px 0 0;
-  color: #64748b;
+.card p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
 }
 
-/* Balance / income / expense cards */
+/* Give each card a subtle banking accent */
 
-.summary-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-bottom: 24px;
+.card:nth-child(1) {
+  border-top: 3px solid var(--primary);
 }
 
-.summary-card {
-  min-height: 130px;
+.card:nth-child(2) {
+  border-top: 3px solid var(--success);
 }
 
-/* Charts */
+.card:nth-child(2) .card-icon {
+  background: var(--success-light);
+}
 
-.dashboard-charts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 24px;
+.card:nth-child(3) {
+  border-top: 3px solid var(--danger);
+}
+
+.card:nth-child(3) .card-icon {
+  background: var(--danger-light);
 }
 
 /* Recent transactions */
 
-.recent-transactions {
-  width: 100%;
+.transactions {
+  background: white;
+
+  border: 1px solid var(--border-light);
+
+  border-radius: 12px;
+
+  padding: 24px;
+
+  box-shadow: var(--shadow);
+}
+
+.transactions h2 {
+  margin: 0 0 18px;
+
+  color: var(--primary);
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Transaction row */
+
+.transaction {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 16px 0;
+
+  border-bottom: 1px solid var(--border-light);
+}
+
+.transaction:last-child {
+  border-bottom: none;
+}
+
+.transaction h3 {
+  margin: 0 0 5px;
+
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.transaction p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  text-transform: capitalize;
+}
+
+.income-amount {
+  color: var(--success);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.expense-amount {
+  color: var(--danger);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  white-space: nowrap;
 }
 
 /* Tablet */
 
-@media (max-width: 1000px) {
-  .summary-cards {
+@media (max-width: 900px) {
+  .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .dashboard-charts {
-    grid-template-columns: 1fr;
+  .cards .card:last-child {
+    grid-column: span 2;
   }
 }
 
@@ -65,20 +241,45 @@
 
 @media (max-width: 600px) {
   .dashboard-header {
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
   }
 
-  .dashboard-title {
-    font-size: 24px;
+  .dashboard-header h1 {
+    font-size: 27px;
   }
 
-  .summary-cards {
+  .dashboard-header .add-button {
+    width: 100%;
+  }
+
+  .cards {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .dashboard-charts {
-    grid-template-columns: 1fr;
+  .cards .card:last-child {
+    grid-column: auto;
+  }
+
+  .card {
+    min-height: 130px;
+  }
+
+  .transactions {
+    padding: 18px;
+  }
+
+  .transaction {
+    gap: 12px;
+  }
+
+  .transaction h3 {
+    font-size: 13px;
+  }
+
+  .income-amount,
+  .expense-amount {
+    font-size: 13px;
   }
 }
