@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TransactionForm() {
+function TransactionForm({ transactions, setTransactions }) {
   const [formData, setFormData] = useState({
     name: "",
     amount: "",
@@ -24,7 +24,18 @@ function TransactionForm() {
       return;
     }
 
-    console.log(formData);
+    const newTransaction = {
+      id: Date.now(),
+      title: formData.name,
+      description: formData.name,
+      amount: Number(formData.amount),
+      category: formData.category,
+      type: formData.type,
+      date: formData.date,
+      status: "Completed",
+    };
+
+    setTransactions([newTransaction, ...transactions]);
 
     alert("Transaction Added Successfully!");
 
