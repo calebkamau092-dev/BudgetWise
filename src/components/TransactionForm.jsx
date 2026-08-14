@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Form.css";
 
-function TransactionForm({ transactions, setTransactions }) {
+function TransactionForm({
+  transactions,
+  setTransactions,
+  editingTransaction = null,
+  onCancelEdit = () => {},
+}) {
   const [formData, setFormData] = useState({
     name: "",
     amount: "",
@@ -9,6 +14,27 @@ function TransactionForm({ transactions, setTransactions }) {
     type: "income",
     date: "",
   });
+
+  useEffect(() => {
+    if (!editingTransaction) {
+      setFormData({
+        name: "",
+        amount: "",
+        category: "Salary",
+        type: "income",
+        date: "",
+      });
+      return;
+    }
+
+    setFormData({
+      name: editingTransaction.title || "",
+      amount: editingTransaction.amount || "",
+      category: editingTransaction.category || "Salary",
+      type: editingTransaction.type || "income",
+      date: editingTransaction.date || "",
+    });
+  }, [editingTransaction]);
 
   const handleChange = (e) => {
     setFormData({
@@ -25,8 +51,8 @@ function TransactionForm({ transactions, setTransactions }) {
       return;
     }
 
-    const newTransaction = {
-      id: Date.now(),
+    const transactionData = {
+      id: editingTransaction ? editingTransaction.id : Date.now(),
       title: formData.name,
       description: formData.name,
       amount: Number(formData.amount),
@@ -36,9 +62,20 @@ function TransactionForm({ transactions, setTransactions }) {
       status: "Completed",
     };
 
-    setTransactions([newTransaction, ...transactions]);
-
-    alert("Transaction Added Successfully!");
+    if (editingTransaction) {
+      setTransactions((currentTransactions) =>
+        currentTransactions.map((transaction) =>
+          transaction.id === editingTransaction.id
+            ? { ...transaction, ...transactionData }
+            : transaction
+        )
+      );
+      alert("Transaction Updated Successfully!");
+      onCancelEdit();
+    } else {
+      setTransactions([transactionData, ...transactions]);
+      alert("Transaction Added Successfully!");
+    }
 
     setFormData({
       name: "",
@@ -121,8 +158,26 @@ function TransactionForm({ transactions, setTransactions }) {
       </div>
 
       <div className="form-actions">
+        {editingTransaction && (
+          <button
+            type="button"
+            className="cancel-button"
+            onClick={() => {
+              onCancelEdit();
+              setFormData({
+                name: "",
+                amount: "",
+                category: "Salary",
+                type: "income",
+                date: "",
+              });
+            }}
+          >
+            Cancel
+          </button>
+        )}
         <button type="submit" className="add-button">
-          Add Transaction
+          {editingTransaction ? "Save Changes" : "Add Transaction"}
         </button>
       </div>
     </form>

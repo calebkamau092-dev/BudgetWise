@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../styles/Navbar.css";
 
 // Navbar component
-function Navbar({ page, setPage }) {
+function Navbar({ page = "dashboard", setPage = () => {} }) {
 
   // Keeps track of whether the mobile menu is open
   const [menuOpen, setMenuOpen] = useState(false);

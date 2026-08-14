@@ -31,7 +31,7 @@
 
   --radius: 10px;
   --shadow: 0 2px 8px rgba(15, 42, 68, 0.08);
-  --shadow-lg: 0 6px 20px rgba(15, 42, 68, 0.10);
+  --shadow-lg: 0 6px 20px rgba(15, 42, 68, 0.1);
 }
 
 /* Reset */
@@ -108,7 +108,9 @@ main {
   border-radius: 7px;
   font-size: 14px;
   font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .add-button:hover {
@@ -135,6 +137,108 @@ main {
 .empty-state p {
   margin: 0;
   font-size: 14px;
+}
+
+.report-panel {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.report-panel h2 {
+  margin: 0 0 18px;
+  color: var(--primary);
+  font-size: 28px;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.report-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.report-card span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.report-card strong {
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.report-section {
+  border-top: 1px solid var(--border-light);
+  padding-top: 18px;
+  margin-top: 18px;
+}
+
+.report-section h3 {
+  margin: 0 0 10px;
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.report-section p {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.category-row span {
+  color: var(--text-secondary);
+}
+
+.category-row strong {
+  color: var(--danger);
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .report-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-panel {
+    padding: 18px;
+  }
 }
 
 /* Footer */
