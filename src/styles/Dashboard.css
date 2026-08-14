@@ -37,15 +37,37 @@
   font-size: 15px;
 }
 
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.secondary-button,
+.add-button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background: #eef4ff;
+  color: var(--primary);
+}
+
+.add-button {
+  background: var(--primary);
+  color: #fff;
+}
+
 /* Summary cards */
 
 .cards {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: 18px;
-
   margin-bottom: 28px;
 }
 
@@ -121,28 +143,6 @@
   color: var(--text-secondary);
 
   font-size: 13px;
-}
-
-/* Give each card a subtle banking accent */
-
-.card:nth-child(1) {
-  border-top: 3px solid var(--primary);
-}
-
-.card:nth-child(2) {
-  border-top: 3px solid var(--success);
-}
-
-.card:nth-child(2) .card-icon {
-  background: var(--success-light);
-}
-
-.card:nth-child(3) {
-  border-top: 3px solid var(--danger);
-}
-
-.card:nth-child(3) .card-icon {
-  background: var(--danger-light);
 }
 
 /* Recent transactions */
@@ -249,7 +249,13 @@
     font-size: 27px;
   }
 
-  .dashboard-header .add-button {
+  .dashboard-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .dashboard-header .add-button,
+  .dashboard-header .secondary-button {
     width: 100%;
   }
 

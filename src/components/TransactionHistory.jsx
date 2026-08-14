@@ -2,7 +2,7 @@ import { useState } from "react";
 import TransactionItem from "./TransactionItem";
 import "../styles/Transaction.css";
 
-function TransactionHistory({ transactions }) {
+function TransactionHistory({ transactions, onDelete, onEdit }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
@@ -55,6 +55,8 @@ function TransactionHistory({ transactions }) {
             <TransactionItem
               key={transaction.id}
               transaction={transaction}
+              onDelete={onDelete}
+              onEdit={onEdit}
             />
           ))
         ) : (

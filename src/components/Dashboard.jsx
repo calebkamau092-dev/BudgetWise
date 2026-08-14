@@ -1,18 +1,15 @@
-import BalanceCard from "./BalanceCard";
-import IncomeCard from "./IncomeCard";
-import ExpenseCard from "./ExpenseCard";
 import "../styles/Dashboard.css";
-import AddTransaction from "./AddTransaction";
 
-function Dashboard({ transactions, setPage }) {
+function Dashboard({ transactions = [], setPage = () => {} }) {
+  const safeTransactions = Array.isArray(transactions) ? transactions : [];
 
   // Get all transactions that are income.
-  const incomeTransactions = transactions.filter(
+  const incomeTransactions = safeTransactions.filter(
     (transaction) => transaction.type === "income"
   );
 
   // Get all transactions that are expenses.
-  const expenseTransactions = transactions.filter(
+  const expenseTransactions = safeTransactions.filter(
     (transaction) => transaction.type === "expense"
   );
 
@@ -40,28 +37,55 @@ function Dashboard({ transactions, setPage }) {
           <p>Here is an overview of your finances.</p>
         </div>
 
-        <button className="add-button"
-          onClick={() => setPage("add")}
-        >
-          + Add Transaction
-        </button>
+        <div className="dashboard-actions">
+          <button className="secondary-button"
+            onClick={() => setPage("transactions")}
+          >
+            View Transactions
+          </button>
+
+          <button className="add-button"
+            onClick={() => setPage("add")}
+          >
+            + Add Transaction
+          </button>
+        </div>
       </div>
 
       <div className="cards">
+        <div className="card">
+          <div className="card-top">
+            <h3>Balance</h3>
+            <div className="card-icon">💳</div>
+          </div>
+          <h2>KES {balance.toLocaleString()}</h2>
+          <p>Your current balance</p>
+        </div>
 
-        <BalanceCard balance={balance} />
+        <div className="card">
+          <div className="card-top">
+            <h3>Income</h3>
+            <div className="card-icon">📈</div>
+          </div>
+          <h2>KES {income.toLocaleString()}</h2>
+          <p>Total income</p>
+        </div>
 
-        <IncomeCard income={income} />
-
-        <ExpenseCard expenses={expenses} />
-
+        <div className="card">
+          <div className="card-top">
+            <h3>Expenses</h3>
+            <div className="card-icon">📉</div>
+          </div>
+          <h2>KES {expenses.toLocaleString()}</h2>
+          <p>Total expenses</p>
+        </div>
       </div>
 
       <div className="transactions">
 
         <h2>Recent Transactions</h2>
 
-        {transactions.map((transaction) => (
+        {safeTransactions.map((transaction) => (
           <div className="transaction" key={transaction.id}>
 
             <div>

@@ -1,4 +1,4 @@
-function TransactionItem({ transaction }) {
+function TransactionItem({ transaction, onDelete, onEdit }) {
   const isIncome = transaction.type === "income";
 
   return (
@@ -24,6 +24,23 @@ function TransactionItem({ transaction }) {
       <span className="transaction-status">
         {transaction.status}
       </span>
+
+      <div className="transaction-actions">
+        <button
+          type="button"
+          className="edit-button"
+          onClick={() => onEdit && onEdit(transaction)}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="delete-button"
+          onClick={() => onDelete && onDelete(transaction.id)}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }
